@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         maxPointsLabel.text = String(maxPoint)
         
         if(currenntPoint==22){
-            
+            showAlert()
         }
         
     }
@@ -51,6 +51,19 @@ class ViewController: UIViewController {
             return currentNumber
         }
         return maxPoint
+        
+    }
+    
+    func showAlert()->Void {
+        
+        // create the alert
+        let alert = UIAlertController(title: "Sucess", message: "Goal accieved, kepp up the good work", preferredStyle: UIAlertController.Style.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
         
     }
     
