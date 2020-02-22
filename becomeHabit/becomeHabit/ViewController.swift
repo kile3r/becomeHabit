@@ -10,47 +10,56 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet var currentStatusLabel: UILabel!
-    @IBOutlet var maxValue: UILabel!
-    var number = 0;
+    var currenntPoint = 0;
+    var maxPoint=0;
 
+    @IBOutlet var maxPointsLabel: UILabel!
+    @IBOutlet var currStatusLabel: UILabel!
+    
+    var number = UserDefaults.standard.integer(forKey: "number")
+    //Spremas novu vrijednost pod "key-em" number
+    //UserDefaults.standard.set(number, forKey: "number")
+    
     @IBAction func AddButton(_ sender: Any) {
         
-        number+=1
-        currentStatusLabel.text = String(number)
+        currenntPoint+=1
+        
+        currStatusLabel.text = String(currenntPoint)
+        
+        maxPoint = getMaxValue(currentNumber:Int(currenntPoint), maxPoint: maxPoint)
+        
+        maxPointsLabel.text = String(maxPoint)
+        
+        if(currenntPoint==22){
+            
+        }
         
     }
     
     @IBAction func resetValue(_ sender: Any) {
         
-        currentStatusLabel.text = String(0)
-        maxValue.text = Int(getMaxValue(number));
+        currenntPoint = 0
+        currStatusLabel.text = "0"
+        
+        maxPointsLabel.text = String(maxPoint)
         
     }
+    
+    func getMaxValue(currentNumber:Int, maxPoint:Int)-> Int{
+        
+        if(currentNumber>maxPoint){
+            return currentNumber
+        }
+        return maxPoint
+        
+    }
+    
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        func getMaxValue(number: Int) -> Int {
-            
-            if(number>Int(maxValue.text!)!){
-            
-        }
-        
-        currentStatusLabel.text = String(number)
-        
-        
-        }
-        
-        
-        // Do any additional setup after loading the view.
-        //var number = UserDefaults.standard.integer(forKey: "number")
-                
-        //number += 1
-                
-        //Spremas novu vrijednost pod "key-em" number
-        //UserDefaults.standard.set(number, forKey: "number")
     }
 
 }
