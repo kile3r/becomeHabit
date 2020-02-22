@@ -12,35 +12,46 @@ class ViewController: UIViewController {
 
     @IBOutlet var currentStatusLabel: UILabel!
     @IBOutlet var maxValue: UILabel!
+    var number = 0;
+
+    @IBAction func AddButton(_ sender: Any) {
+        
+        number+=1
+        currentStatusLabel.text = String(number)
+        
+    }
+    
+    @IBAction func resetValue(_ sender: Any) {
+        
+        currentStatusLabel.text = String(0)
+        maxValue.text = Int(getMaxValue(number));
+        
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        func getMaxValue(number: Int) -> Int {
+            
+            if(number>Int(maxValue.text!)!){
+            
+        }
+        
+        currentStatusLabel.text = String(number)
+        
+        
+        }
+        
+        
         // Do any additional setup after loading the view.
-        var number = UserDefaults.standard.integer(forKey: "number")
+        //var number = UserDefaults.standard.integer(forKey: "number")
                 
-        number += 1
+        //number += 1
                 
         //Spremas novu vrijednost pod "key-em" number
-        UserDefaults.standard.set(number, forKey: "number")
+        //UserDefaults.standard.set(number, forKey: "number")
     }
-    
-    @IBAction func addPointButton(_ sender: UIButton) {
-        
-        
-    }
-    @IBAction func resetCurrentValueButton(_ sender: Any) {
-        
-        currentStatusLabel.text = String(0)
-        
-    }
-    
-    func AddPoint(Int number) -> void {
-        
-    let number = 0
-        
-    }
-
 
 }
 
