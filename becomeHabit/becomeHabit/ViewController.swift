@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let defaults = UserDefaults.standard
 
     var currenntPoint = 0;
     var maxPoint=0;
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
         maxPointsLabel.text = String(maxPoint)
         
         if(currenntPoint==22){
-            showAlert()
+            showSuccessAlert()
         }
         
     }
@@ -54,16 +56,30 @@ class ViewController: UIViewController {
         
     }
     
-    func showAlert()->Void {
+    func showSuccessAlert()->Void {
         
         // create the alert
-        let alert = UIAlertController(title: "Sucess", message: "Goal accieved, kepp up the good work", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Sucess", message: "Goal achieved, kepp up the good work", preferredStyle: UIAlertController.Style.alert)
 
         // add an action (button)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
 
         // show the alert
         self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func saveToUserDefaults()->Void{
+        
+        
+        defaults.set(maxPoint, forKey: "maxPoints")
+        defaults.set(currenntPoint, forKey: "currentPoints")
+        
+    }
+    
+    func getFromUserDefaults()->Void{
+        maxPoint = defaults.integer(forKey: "maxPoints")
+        currenntPoint = defaults.integer(forKey: "currentPoints")
         
     }
     
